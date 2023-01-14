@@ -12,3 +12,8 @@ To Activate Virtual Environment
 ```
 . venv/bin/activate
 ```
+
+To Deactivate VENV
+```
+conda deactivate
+```
