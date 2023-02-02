@@ -17,3 +17,8 @@ To Deactivate VENV
 ```
 conda deactivate
 ```
+
+To Install Required Libraries
+```
+pip install -r requirements.txt
+```
