@@ -1,1 +1,74 @@
-<h1>Hello World</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>House Price Predictor</title>
+</head>
+<body>
+    <div class="container mt-5">
+        <p class="text-center fw-light fs-1 mb-3"><code>Predict California House Price Now</code></p>
+        <div class="d-flex justify-content-center">
+            <div class="text-white bg-secondary mb-3" style="max-width: 30rem;">
+                <div class="text-center fw-lighter">Attribute Information</div>
+                <ul class="list-group list-group-flush text-center">
+                    <li class="list-group-item fw-lighter">MedInc - median income in block group</li>
+                    <li class="list-group-item fw-lighter">HouseAge - median house age in block group</li>
+                    <li class="list-group-item fw-lighter">AveRooms - average number of rooms per household</li>
+                    <li class="list-group-item fw-lighter">AveBedrms - average number of bedrooms per household</li>
+                    <li class="list-group-item fw-lighter">Population - block group population</li>
+                    <li class="list-group-item fw-lighter">AveOccup - average number of household members</li>
+                    <li class="list-group-item fw-lighter">Latitude - block group latitude</li>
+                    <li class="list-group-item fw-lighter">Longitude - block group longitude</li>
+                </ul>
+            </div>
+        </div>
+        <p class="text-center fw-light fs-2 mb-3"><code>Inference Now</code></p>
+        <form action="{{ url_for('predict') }}" method="post">
+            <div class="row">
+                <div class="col">
+                    <label class="form-label">MedInc</label>
+                    <input name="MedInc" value="2.3886" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">HouseAge</label>
+                    <input name="HouseAge" value="16.0" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">AveRooms</label>
+                    <input name="AveRooms" value="5.254717" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">AveBedrms</label>
+                    <input name="AveBedrms" value="1.162264" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Population</label>
+                    <input name="Population" value="1387.0" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">AveOccup</label>
+                    <input name="AveOccup" value="2.616981" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Latitude</label>
+                    <input name="Latitude" value="39.37" required type="text" class="form-control">
+                </div>
+                <div class="col">
+                    <label class="form-label">Longitude</label>
+                    <input name="Longitude" value="-121.24" required type="text" class="form-control">
+                </div>
+            </div>
+            <div class="text-center mt-2 p-2">
+                <button type="submit" class="btn btn-warning">Predict</button>
+            </div>
+        </form>
+        <div class="text-center">
+            <div class="badge bg-success" style="width: 8rem;">{{output}}</div>
+            <div><small><code>It refers to the median house value for California districts</code></small></div>
+        </div>
+    </div>
+</body>
+</html>
