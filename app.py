@@ -28,7 +28,7 @@ def predict():
     data = [ float(i) for i in request.form.values()]
     mod_data = sc.transform(np.array(data).reshape(1,-1))
     y_pred = model.predict(mod_data)
-    return render_template('index.html', output = 'Prediction: {}'.format(round(y_pred[0],3)))
+    return render_template('index.html', output = 'Prediction: {}'.format(round(y_pred[0],3)), msg = 'Predicted result refers to the median house value for California districts')
 
 if __name__=="__main__":
     app.run(debug=True)
