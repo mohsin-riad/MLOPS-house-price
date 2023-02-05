@@ -10,11 +10,18 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    # steps:
+    #   - name: Wait for Render Deployment
+    #     uses: bounceapp/render-action@0.6.0
+    #     with:
+    #       render-token: ${{ secrets.RENDER_API_KEY }}
+    #       github-token: ${{ secrets.GH_TOKEN }}
+    #       service-id: ${{ secrets.RENDER_SERVICE_ID }}
     steps:
-      - name: Wait for Render Deployment
-        uses: bounceapp/render-action@0.6.0
+      - uses: actions/checkout@v3
+      - uses: JorgeLNJunior/render-deploy@v1.3.0
         with:
-          render-token: ${{ secrets.RENDER_API_KEY }}
-          github-token: ${{ secrets.GH_TOKEN }}
-          service-id: ${{ secrets.RENDER_SERVICE_ID }}
-    
+          service_id: ${{ secrets.RENDER_SERVICE_ID }} # required
+          api_key: ${{ secrets.RENDER_API_KEY }} # required
+          clear_cache: true # Clear build cache. Optional
+          wait_deploy: false # Wait until the deploy status is successful. Warning! Free Render services can take +10 minutes to be fully deployed. Optional
