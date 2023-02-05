@@ -1,9 +1,0 @@
-services:
-  # A Docker web service
-  - type: web
-    name: docker container deployment
-    env: docker
-    region: singapore
-    rootDir: .
-    healthCheckPath: /
-    
