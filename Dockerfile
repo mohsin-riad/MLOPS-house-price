@@ -1,6 +1,7 @@
-FROM python:3.7.2-alpine3.8
+FROM python:3.9-slim-buster
 COPY . /app
 WORKDIR /app 
+RUN apk add --no-cache python3-dev libffi-dev gcc && pip3 install --upgrade pip 
 RUN pip install -r requirements.txt 
 EXPOSE $PORT 
 CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
